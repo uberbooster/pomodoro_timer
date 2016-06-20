@@ -31,3 +31,9 @@ git commit -m "completed user story 3"
 
 git checkout master
 git merge breakButton
+
+git branch makeTimerWork
+git checkout makeTimerWork
+
+<!-- In the app.js file -->
+$(document).ready(function(){});
