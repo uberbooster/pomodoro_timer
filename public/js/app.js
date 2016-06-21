@@ -1,23 +1,29 @@
 $(document).ready(function(){
-  var start = $('#start');
+  var startBtn = $('#start');
   var minutes = $('#minutes');
   var seconds = $('#seconds');
   var breakBtn = $('#break')
-  console.log(start);
+  console.log(startBtn);
   console.log(minutes);
   console.log(seconds);
 
-  start.on('click', startCountdown);
+  startBtn.on('click', startCountdown);
 
   function startCountdown(){
     // alert('I work!');
+
     setInterval(function(){
       var secondsVal = +seconds.text(); // the + sign makes this behave like a number
-      var minutesVal = +minutes.text(); // the
+      var minutesVal = +minutes.text();
+      startBtn.addClass('disabled');
+      //startBtn.addAttr('disabled');
       if (secondsVal === 0 && minutesVal ===0){
         breakBtn.removeClass('disabled');
         breakBtn.removeAttr('disabled');
-      }
+        startBtn.removeClass('disabled');
+        startBtn.removeAttr('disabled');
+        return;
+      };
       if(secondsVal === 0){
         seconds.text(59);
         minutes.text(minutesVal-1);
@@ -30,6 +36,12 @@ $(document).ready(function(){
       };
       // console.log(typeof +secondsVal);
     }, 1000);
+  };
+
+  breakBtn.on('click', breakButtonClicked);
+
+  function breakButtonClicked(){
+    alert('Break button was clicked');
   };
 
 });
