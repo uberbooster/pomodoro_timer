@@ -37,3 +37,11 @@ git checkout makeTimerWork
 
 <!-- In the app.js file -->
 $(document).ready(function(){});
+
+git add .
+git commit -m "got timer to work"
+
+git checkout master
+git merge makeTimerWork
+
+git push --all

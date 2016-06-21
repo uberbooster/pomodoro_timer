@@ -2,6 +2,7 @@ $(document).ready(function(){
   var start = $('#start');
   var minutes = $('#minutes');
   var seconds = $('#seconds');
+  var breakBtn = $('#break')
   console.log(start);
   console.log(minutes);
   console.log(seconds);
@@ -13,6 +14,10 @@ $(document).ready(function(){
     setInterval(function(){
       var secondsVal = +seconds.text(); // the + sign makes this behave like a number
       var minutesVal = +minutes.text(); // the
+      if (secondsVal === 0 && minutesVal ===0){
+        breakBtn.removeClass('disabled');
+        breakBtn.removeAttr('disabled');
+      }
       if(secondsVal === 0){
         seconds.text(59);
         minutes.text(minutesVal-1);
