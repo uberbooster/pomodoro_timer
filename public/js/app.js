@@ -44,6 +44,7 @@ $(document).ready(function(){
         }
       };
       // console.log(typeof +secondsVal);
+      document.getElementsByTagName("TITLE")[0].innerHTML = minutes.text()+":"+seconds.text()+" Pomodoro Timer"
     }, 1000);
   };
 
