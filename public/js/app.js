@@ -8,25 +8,34 @@ $(document).ready(function(){
   console.log(seconds);
 
   startBtn.on('click', startCountdown);
+  breakBtn.on('click', breakButtonClicked);
+
+  function breakButtonClicked(){
+    minutes.text('05');
+    seconds.text('00');
+    startCountdown();
+  };
 
   function startCountdown(){
     // alert('I work!');
 
-    setInterval(function(){
+    var countdown = setInterval(function(){
       var secondsVal = +seconds.text(); // the + sign makes this behave like a number
       var minutesVal = +minutes.text();
-      startBtn.addClass('disabled');
       //startBtn.addAttr('disabled');
       if (secondsVal === 0 && minutesVal ===0){
         breakBtn.removeClass('disabled');
         breakBtn.removeAttr('disabled');
-        startBtn.removeClass('disabled');
-        startBtn.removeAttr('disabled');
+        clearInterval(countdown);
         return;
       };
       if(secondsVal === 0){
         seconds.text(59);
-        minutes.text(minutesVal-1);
+        if(minutesVal <= 10){
+            minutes.text("0" + (minutesVal-1));
+        } else {
+            minutes.text(minutesVal-1);
+        }
       } else {
         if(secondsVal <= 10){
           seconds.text("0" + (secondsVal-1));
@@ -38,10 +47,7 @@ $(document).ready(function(){
     }, 1000);
   };
 
-  breakBtn.on('click', breakButtonClicked);
 
-  function breakButtonClicked(){
-    alert('Break button was clicked');
-  };
+
 
 });
