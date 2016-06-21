@@ -12,8 +12,10 @@ $(document).ready(function(){
     // alert('I work!');
     setInterval(function(){
       var secondsVal = +seconds.text(); // the + sign makes this behave like a number
+      var minutesVal = +minutes.text(); // the
       if(secondsVal === 0){
         seconds.text(59);
+        minutes.text(minutesVal-1);
       } else {
         if(secondsVal <= 10){
           seconds.text("0" + (secondsVal-1));
